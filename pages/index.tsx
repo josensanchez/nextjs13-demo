@@ -9,7 +9,7 @@ export default function Home({repositories}:HomeProps) {
       <Layout>
         <section id="Home" className="container">
           <hgroup>
-            <h1>Deprecated Home</h1>
+            <h1>Nextjs-13 Demo Home</h1>
             <h2>Here are some link to test the GitHub markdown API</h2>
           </hgroup>
           <div className="grid">
