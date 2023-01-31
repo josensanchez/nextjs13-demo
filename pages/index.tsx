@@ -1,16 +1,18 @@
+import { GetServerSideProps } from "next";
 import Link from "next/link";
 import Layout from "@/components/Layout";
+import { Repository } from "@/lib/github";
 
 export default function Home({repositories}:HomeProps) {
   return (
     <>
       <Layout>
-        <section id="Home" class="container">
+        <section id="Home" className="container">
           <hgroup>
             <h1>Deprecated Home</h1>
             <h2>Here are some link to test the GitHub markdown API</h2>
           </hgroup>
-          <div class="grid">
+          <div className="grid">
           { repositories.map( ({name, full_name, description}) =>
             <article key={full_name}>
               <hgroup>

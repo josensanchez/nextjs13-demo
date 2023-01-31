@@ -6,14 +6,14 @@ export default function Home({ name, organization, full_name, description, readm
   return (
     <>
       <Layout>
-        <section id="Home" class="container">
+        <section id="Home" className="container">
           <hgroup>
             <h1>{name} </h1>
             <h2> {full_name}</h2>
           </hgroup>
           <p>{description}</p>
           
-          <article class="readme" dangerouslySetInnerHTML={{ __html: readme }} />
+          <article className="readme" dangerouslySetInnerHTML={{ __html: readme }} />
         </section>
       </Layout>
     </>
@@ -29,8 +29,12 @@ type RepositoryProps = {
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { organization, name } = context.params;
-  const repository = await getRepository(organization, name);
+
+  
+  const organization = context.params?.organization ?? "default";
+  const name = context.params?.name ?? "default";
+  
+  const repository = await getRepository(paramToString(organization), paramToString(name));
   // const index = await md2html("## Hello World");
   return {
     props: {
@@ -42,3 +46,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }, // will be passed to the page component as props
   };
 };
+
+function paramToString(param: string | string[]):string {
+  if (Array.isArray(param)) {
+    return param.join('');
+  }
+  return param
+}
