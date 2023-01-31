@@ -34,9 +34,14 @@ export const md2html = async (md: string): Promise<string> => {
   const body = JSON.stringify({
     "text": md,
   });
-
   return fetch(`${baseUrl}/markdown`, {method:"POST", headers, body})
-    .then(response => response.text())
+    .then(response => {
+      if (!response.ok) throw Error(response.status);
+      return response.text()
+    })
+    .catch((error)  => {
+      return "Somehing is not RIGHT. did you add you <b>GITHUB_TOKEN</b> in <code>.env.local</code> ?";
+    });
 };
 
 
