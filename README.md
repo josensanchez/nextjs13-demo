@@ -11,6 +11,15 @@ this is a continuation of [phx-demo](https://github.com/josensanchez/phx-demo) b
 
 ## Getting Started
 
+### .env.local
+
+```
+// Set your github token here
+
+GITHUB_TOKEN=your_bearer_token_goes_here
+```
+More information on how to get yur token here https://docs.github.com/en/rest/guides/getting-started-with-the-rest-api?apiVersion=2022-11-28#authenticating
+
 First, run the development server:
 
 ```bash
